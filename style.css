@@ -49,15 +49,16 @@ div {
     border: 4px solid hsl(var(--hue), var(--saturation), 25%);
     border-radius: 8px;
     overflow-y: auto;
+    font-family: monospace;
+}
+#rules > h1 {
+    font-family: sans-serif;
 }
 #score {
     text-align: center;
     height: 25%;
     flex-direction: column;
     justify-content: flex-start;
-    inline-size: 90%;
-    padding-left: 5%;
-    padding-right: 5%;
     background-color: hsl(197, 20%, 80%);
     color: hsl(var(--hue), var(--saturation), 15%);
     border: 4px solid hsl(var(--hue), var(--saturation), 25%);

@@ -19,10 +19,15 @@ resetRules();
 
 function generateBoard(width=16, height=16) {
     if(boardExists) {
-        document.getElementById("board").remove();
         document.getElementById("rulesContainer").remove();
     }
     boardExists = true;
+    document.getElementById("genButton").style.display = "none";
+    document.getElementById("stopButton").style.display = "flex";
+    document.getElementById("goButton").style.display = "flex";
+    document.getElementById("stepButton").style.display = "flex";
+    document.getElementById("turboButton").style.display = "flex";
+    document.getElementById("randButton").style.display = "flex";
     
     board_height = height;
     heightOffset = 0;
@@ -79,8 +84,7 @@ function generateBoard(width=16, height=16) {
     rules.id = "rules";
     rulesPage.append(rules);
     putUpRules();
-    // resetRules();
-    formatConditions();
+    assignNewScoringCategories();
 
     for(let i = 0; i < 4; i++) {
         let arrow = document.createElement("div");
@@ -196,7 +200,6 @@ function doStep() {
     }
     scorePoints();
     updateScore();
-    assignNewScoringCategories();
 }
 
 //call after a step; score appropriate points
@@ -301,6 +304,7 @@ function mapDifference(map1, map2) {
 function startSteps() {
     document.getElementById("goButton").style.display = "none";
     document.getElementById("stopButton").style.display = "flex";
+    document.getElementById("stopButton").style.filter = "brightness(125%) hue-rotate(180deg)";
     clearInterval(stepInterval);
     stepInterval = setInterval(() => { doStep() }, speed);
     activeStepInterval = true;
@@ -308,6 +312,7 @@ function startSteps() {
 function stopSteps() {
     document.getElementById("stopButton").style.display = "none";
     document.getElementById("goButton").style.display = "flex";
+    document.getElementById("goButton").style.filter = "brightness(125%) hue-rotate(-45deg)";
     clearInterval(stepInterval);
     activeStepInterval = false;
 }

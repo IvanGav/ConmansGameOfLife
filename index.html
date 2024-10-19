@@ -13,11 +13,8 @@
         <h1>Conman's Game of Life</h1>
     </div>
     <div id="menu">
-        <div class="buttonContainer">
+        <div class="buttonContainer" id="genButton">
             <div class="button" onclick="generateBoard()">Regenerate Grid</div>
-        </div>
-        <div class="buttonContainer">
-            <div class="button" onclick="doStep()">Step</div>
         </div>
         <div class="buttonContainer" id="goButton">
             <div class="button" onclick="doStep(); startSteps()">Go</div>
@@ -25,18 +22,18 @@
         <div class="buttonContainer" id="stopButton" style="display: none;">
             <div class="button" onclick="stopSteps()">Stop</div>
         </div>
+        <div class="buttonContainer" id="stepButton">
+            <div class="button" onclick="doStep()">Step</div>
+        </div>
         <div class="buttonContainer" id="turboButton">
             <div class="button" onclick="toggleTurbo()">Toggle Turbo Mode</div>
         </div>
-        <div class="buttonContainer">
-            <div class="button" onclick="randBoard()">Set Random Square</div>
+        <div class="buttonContainer" id="randButton">
+            <div class="button" onclick="randBoard()">Generate Random Cells</div>
         </div>
-        <div class="buttonContainer">
+        <!-- <div class="buttonContainer">
             <div class="button" onclick="addRandRule()">Add Rule</div>
-        </div>
-        <div class="buttonContainer">
-            <div class="button" onclick="resetRules()">Reset Rules</div>
-        </div>
+        </div> -->
     </div>
     <div id="game"></div>
     <script src="apply_rules.js"></script>

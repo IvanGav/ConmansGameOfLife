@@ -33,6 +33,8 @@ function putUpRules() {
         rulesContainer.append(document.createElement("br"));
         rulesContainer.append(document.createElement("br"));
     }
+    
+    addRandRule();
 }
 
 function genRandRule() {
@@ -439,7 +441,17 @@ function updateScore() {
     let turnHeader = scoreContainer.children[0];
     turnHeader.innerHTML = `Turn: ${Math.round(currentTurn++)}`;   
     let scoreHeader = scoreContainer.children[1];
-    scoreHeader.innerHTML = `Score: ${Math.round(points)}`;       
+    scoreHeader.innerHTML = `Score: ${Math.round(points)}`;    
+    if(currentTurn > 20) {
+        stopSteps();
+        document.getElementById("board").remove();
+        document.getElementById("genButton").style.display = "flex";
+        document.getElementById("stopButton").style.display = "none";
+        document.getElementById("goButton").style.display = "none";
+        document.getElementById("stepButton").style.display = "none";
+        document.getElementById("turboButton").style.display = "none";
+        document.getElementById("randButton").style.display = "none";
+    }   
 }
 function formatConditions() {
     let scorePre = document.getElementById("scorePre");

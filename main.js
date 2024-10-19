@@ -305,6 +305,16 @@ function startSteps() {
     document.getElementById("goButton").style.display = "none";
     document.getElementById("stopButton").style.display = "flex";
     document.getElementById("stopButton").style.filter = "brightness(125%) hue-rotate(180deg)";
+
+    arrows = document.getElementsByClassName("arrow");
+    console.log(arrows);
+    for(let arrow of arrows) {
+        arrow.style.filter = "opacity(0%)";
+        setTimeout(() => {
+            arrow.style.display = "none";
+        }, 300);
+    }
+
     clearInterval(stepInterval);
     stepInterval = setInterval(() => { doStep() }, speed);
     activeStepInterval = true;
@@ -313,6 +323,16 @@ function stopSteps() {
     document.getElementById("stopButton").style.display = "none";
     document.getElementById("goButton").style.display = "flex";
     document.getElementById("goButton").style.filter = "brightness(125%) hue-rotate(-45deg)";
+
+    arrows = document.getElementsByClassName("arrow");
+    console.log(arrows);
+    for(let arrow of arrows) {
+        arrow.style.display = "flex";
+        setTimeout(() => {
+            arrow.style.filter = "opacity(50%)";
+        }, 50);
+    }
+
     clearInterval(stepInterval);
     activeStepInterval = false;
 }

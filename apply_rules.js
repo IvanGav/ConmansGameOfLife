@@ -21,6 +21,15 @@ function resetRules() {
     putUpRules();
 }
 
+function importRules(ruleStr) {
+    currentRules = JSON.parse(ruleStr);
+    putUpRules();
+}
+
+function exportRules() {
+    console.log(currentRules);
+}
+
 function putUpRules() {
     let rulesContainer = document.getElementById("rules");
     rulesContainer.innerHTML = "";

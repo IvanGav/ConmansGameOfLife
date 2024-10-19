@@ -442,7 +442,7 @@ function updateScore() {
     turnHeader.innerHTML = `Turn: ${Math.round(currentTurn++)}`;   
     let scoreHeader = scoreContainer.children[1];
     scoreHeader.innerHTML = `Score: ${Math.round(points)}`;    
-    if(currentTurn > 20) {
+    if(currentTurn > 100) {
         stopSteps();
         document.getElementById("board").remove();
         document.getElementById("genButton").style.display = "flex";

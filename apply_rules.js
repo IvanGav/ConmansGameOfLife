@@ -338,14 +338,20 @@ function step(prevStateMap) {
             if(!prevStateMap.has(cstr)) updateCoord(cstr, c, prevStateMap, nextStateMap, nextEmptyMap);
         }
     });
-    //finish calulating stats
-    scoringCategories.maxXDist = rightMost - leftMost;
-    scoringCategories.maxYDist = upMost - downMost;
     let colSum = cols[0]+cols[1]+cols[2]+cols[3];
     let colMax = Math.max(...cols);
-    scoringCategories.colorDominance = ((colMax / colSum) * 100) * (colSum/500); //percentage of most abundant color (scaled by # cells)
-    scoringCategories.colorBalance = 0-((colMax - (colSum/4)) - colSum); //i wish i knew what it meant
-    console.log(scoringCategories); // THIS IS A CONSOLE LOG
+    if(colSum == 0) {
+        scoringCategories.maxXDist = 0;
+        scoringCategories.maxYDist = 0;
+        scoringCategories.colorDominance = 0;
+        scoringCategories.colorBalance = 0;
+    } else {
+        //finish calulating stats
+        scoringCategories.maxXDist = rightMost - leftMost;
+        scoringCategories.maxYDist = upMost - downMost;
+        scoringCategories.colorDominance = ((colMax / colSum) * 100) * (colSum/500); //percentage of most abundant color (scaled by # cells)
+        scoringCategories.colorBalance = 0-((colMax - (colSum/4)) - colSum); //i wish i knew what it meant
+    }
     return nextStateMap;
 }
 

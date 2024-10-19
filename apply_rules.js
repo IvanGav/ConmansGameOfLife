@@ -430,5 +430,5 @@ function updateScore() {
     scorePre.innerHTML = formatConditions();
 }
 function formatConditions() {
-    return `${scoreConditions[0]}\n${scoreConditions[1]}\n${scoreConditions[2]}`;
+    return `${displayScoreConditions[0]}\n${displayScoreConditions[1]}\n${displayScoreConditions[2]}`;
 }

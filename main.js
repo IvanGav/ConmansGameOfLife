@@ -11,7 +11,7 @@ let genSpeed = 25;
 let satisfyingMode = false;
 let points;
 let activeScoringCategories = []; //list of {category: String, mult: number}
-let scoreConditions = ["", "Free Round", ""];
+let displayScoreConditions = ["", "Free Round", ""];
 
 generateBoard();
 
@@ -213,31 +213,31 @@ function scorePoints() {
         switch(cat.category) {
             case "cellBorn": 
                 points += scoringCategories.cellBorn * cat.mult;
-                scoreConditions[i++] = "cellBorn";
+                displayScoreConditions[i++] = "cellBorn";
                 break;
             case "cellDies":
                 points += scoringCategories.cellDies * cat.mult;
-                scoreConditions[i++] = "cellDies";
+                displayScoreConditions[i++] = "cellDies";
                 break;
             case "cellAlive":
                 points += scoringCategories.cellAlive * cat.mult;
-                scoreConditions[i++] = "cellAlive";
+                displayScoreConditions[i++] = "cellAlive";
                 break;
             case "maxYDist":
                 points += scoringCategories.maxYDist * cat.mult;
-                scoreConditions[i++] = "maxYDist";
+                displayScoreConditions[i++] = "maxYDist";
                 break;
             case "maxXDist":
                 points += scoringCategories.maxXDist * cat.mult;
-                scoreConditions[i++] = "maxXDist";
+                displayScoreConditions[i++] = "maxXDist";
                 break;
             case "colorBalance":
                 points += scoringCategories.colorBalance * cat.mult;
-                scoreConditions[i++] = "colorBalance";
+                displayScoreConditions[i++] = "colorBalance";
                 break;
             case "colorDominance":
                 points += scoringCategories.colorDominance * cat.mult;
-                scoreConditions[i++] = "colorDominance";
+                displayScoreConditions[i++] = "colorDominance";
                 break;
             default: break;
         }

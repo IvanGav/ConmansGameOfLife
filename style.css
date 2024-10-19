@@ -117,6 +117,7 @@ div {
 .space {
     border-radius: 10%;
     margin: 2px;
+    cursor: pointer;
 }
 
 /* Right */
@@ -174,6 +175,7 @@ div {
 .arrow {
     transition-duration: 0.2s;
     filter: opacity(50%);
+    cursor: pointer;
 }
 .arrow:hover {
     transform: scale(125%);

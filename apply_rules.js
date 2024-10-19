@@ -18,8 +18,15 @@ function resetRules() {
         {type: 0, numCells: 3, comparison: 4, neighborState: 1},
         {type: 2, numCells: 3, comparison: 2, neighborState: 1, babyState: 1},
     ];
-    
+    putUpRules();
+}
+
+function putUpRules() {
     let rulesContainer = document.getElementById("rules");
+    rulesContainer.innerHTML = "";
+    let rulesTitle = document.createElement("h1");
+    rulesTitle.innerHTML = "Rules";
+    rules.append(rulesTitle);
     for(let i = 0; i < currentRules.length; i++) {
         let content = document.createTextNode(`${i+1}. ` + ruleParser(currentRules[i]));
         rulesContainer.append(content);
@@ -331,14 +338,20 @@ function step(prevStateMap) {
             if(!prevStateMap.has(cstr)) updateCoord(cstr, c, prevStateMap, nextStateMap, nextEmptyMap);
         }
     });
-    //finish calulating stats
-    scoringCategories.maxXDist = rightMost - leftMost;
-    scoringCategories.maxYDist = upMost - downMost;
     let colSum = cols[0]+cols[1]+cols[2]+cols[3];
     let colMax = Math.max(...cols);
-    scoringCategories.colorDominance = ((colMax / colSum) * 100) * (colSum/500); //percentage of most abundant color (scaled by # cells)
-    scoringCategories.colorBalance = 0-((colMax - (colSum/4)) - colSum); //i wish i knew what it meant
-    console.log(scoringCategories); // THIS IS A CONSOLE LOG
+    if(colSum == 0) {
+        scoringCategories.maxXDist = 0;
+        scoringCategories.maxYDist = 0;
+        scoringCategories.colorDominance = 0;
+        scoringCategories.colorBalance = 0;
+    } else {
+        //finish calulating stats
+        scoringCategories.maxXDist = rightMost - leftMost;
+        scoringCategories.maxYDist = upMost - downMost;
+        scoringCategories.colorDominance = ((colMax / colSum) * 100) * (colSum/500); //percentage of most abundant color (scaled by # cells)
+        scoringCategories.colorBalance = 0-((colMax - (colSum/4)) - colSum); //i wish i knew what it meant
+    }
     return nextStateMap;
 }
 

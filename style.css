@@ -63,6 +63,10 @@ div {
     border-radius: 8px;
     overflow-y: auto;
 }
+#score h1 {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
 
 #board {
     position: relative;

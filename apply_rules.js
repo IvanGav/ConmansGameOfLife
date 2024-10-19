@@ -424,7 +424,7 @@ function ruleParser(rule) {
 function updateScore() {
     let scoreContainer = document.getElementById("scoreHeaderDiv");
     let turnHeader = scoreContainer.children[0];
-    turnHeader.innerHTML = `Turn: ${Math.round(currentTurn)}`;   
+    turnHeader.innerHTML = `Turn: ${Math.round(currentTurn++)}`;   
     let scoreHeader = scoreContainer.children[1];
     scoreHeader.innerHTML = `Score: ${Math.round(points)}`;       
 }

@@ -67,6 +67,9 @@ div {
     margin-bottom: 0px;
     padding-bottom: 0px;
 }
+#scoreHeaderDiv {
+    justify-content: space-around;
+}
 
 #board {
     position: relative;

@@ -422,13 +422,13 @@ function ruleParser(rule) {
 }
 
 function updateScore() {
-    let scoreContainer = document.getElementById("score");
-    let scoreHeader = scoreContainer.children[0];
-    scoreHeader.innerHTML = "Score: " + Math.round(points);   
-
-    let scorePre = document.getElementById("scorePre");
-    scorePre.innerHTML = formatConditions();
+    let scoreContainer = document.getElementById("scoreHeaderDiv");
+    let turnHeader = scoreContainer.children[0];
+    turnHeader.innerHTML = `Turn: ${Math.round(currentTurn)}`;   
+    let scoreHeader = scoreContainer.children[1];
+    scoreHeader.innerHTML = `Score: ${Math.round(points)}`;       
 }
 function formatConditions() {
-    return `${displayScoreConditions[0]}\n${displayScoreConditions[1]}\n${displayScoreConditions[2]}`;
+    let scorePre = document.getElementById("scorePre");
+    scorePre.innerHTML = `${displayScoreConditions[0]}\n${displayScoreConditions[1]}\n${displayScoreConditions[2]}`;
 }

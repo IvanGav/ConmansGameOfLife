@@ -12,6 +12,7 @@ let satisfyingMode = false;
 let points;
 let activeScoringCategories = []; //list of {category: String, mult: number}
 let displayScoreConditions = ["", "Free Round", ""];
+let currentTurn = 0;
 
 generateBoard();
 
@@ -28,6 +29,8 @@ function generateBoard(width=16, height=16) {
     widthOffset = 0;
     alive_cells = new Map(); // Map[x,y] = state
     points = 0;
+    displayScoreConditions = ["", "Free Round", ""];
+    currentTurn = 1;
     
     stopSteps();
     
@@ -56,9 +59,17 @@ function generateBoard(width=16, height=16) {
     let score = document.createElement("div");
     score.id = "score";
     rulesPage.append(score);
+    let scoreHeaderDiv = document.createElement("div");
+    scoreHeaderDiv.id = "scoreHeaderDiv";
+    score.append(scoreHeaderDiv);
     let scoreTitle = document.createElement("h1");
     scoreTitle.innerHTML = "Score: 0";
-    score.append(scoreTitle);
+    let turnTitle = document.createElement("h1");
+    turnTitle.innerHTML = "Turn: 0";
+
+    scoreHeaderDiv.append(turnTitle);
+    scoreHeaderDiv.append(scoreTitle);
+
     let scoresPre = document.createElement("pre");
     scoresPre.id = "scorePre";
     score.append(scoresPre);
@@ -70,6 +81,7 @@ function generateBoard(width=16, height=16) {
     rulesTitle.innerHTML = "Rules";
     rules.append(rulesTitle);
     resetRules();
+    formatConditions();
 
     for(let i = 0; i < 4; i++) {
         let arrow = document.createElement("div");
@@ -213,30 +225,58 @@ function scorePoints() {
         switch(cat.category) {
             case "cellBorn": 
                 points += scoringCategories.cellBorn * cat.mult;
-                displayScoreConditions[i++] = "cellBorn";
                 break;
             case "cellDies":
                 points += scoringCategories.cellDies * cat.mult;
-                displayScoreConditions[i++] = "cellDies";
                 break;
             case "cellAlive":
                 points += scoringCategories.cellAlive * cat.mult;
-                displayScoreConditions[i++] = "cellAlive";
                 break;
             case "maxYDist":
                 points += scoringCategories.maxYDist * cat.mult;
-                displayScoreConditions[i++] = "maxYDist";
                 break;
             case "maxXDist":
                 points += scoringCategories.maxXDist * cat.mult;
-                displayScoreConditions[i++] = "maxXDist";
                 break;
             case "colorBalance":
                 points += scoringCategories.colorBalance * cat.mult;
-                displayScoreConditions[i++] = "colorBalance";
                 break;
             case "colorDominance":
                 points += scoringCategories.colorDominance * cat.mult;
+                break;
+            default: break;
+        }
+    }
+    // console.log("cats:");
+    // console.log(activeScoringCategories);
+    // console.log("points:");
+    // console.log(points);
+    // console.log("_______________________");
+}
+//call after a step; score appropriate points
+function setupConditionsArray() {
+    let i = 0;
+    for(let cat of activeScoringCategories) {
+        switch(cat.category) {
+            case "cellBorn": 
+                displayScoreConditions[i++] = "cellBorn";
+                break;
+            case "cellDies":
+                displayScoreConditions[i++] = "cellDies";
+                break;
+            case "cellAlive":
+                displayScoreConditions[i++] = "cellAlive";
+                break;
+            case "maxYDist":
+                displayScoreConditions[i++] = "maxYDist";
+                break;
+            case "maxXDist":
+                displayScoreConditions[i++] = "maxXDist";
+                break;
+            case "colorBalance":
+                displayScoreConditions[i++] = "colorBalance";
+                break;
+            case "colorDominance":
                 displayScoreConditions[i++] = "colorDominance";
                 break;
             default: break;
@@ -268,6 +308,10 @@ function assignNewScoringCategories() {
     range = allScoringCategoryMultiplyers[cat3];
     mult = Math.floor(Math.random() * (range[1]-range[0]))+range[0];
     activeScoringCategories.push({category: allScoringCategories[cat3], mult: mult});
+
+    setupConditionsArray();
+    formatConditions();
+    
 }
 
 function mapDifference(map1, map2) {

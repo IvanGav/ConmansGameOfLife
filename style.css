@@ -21,6 +21,7 @@ div {
 
 #menu {
     flex-direction: row;
+    flex-wrap: wrap;
     margin-bottom: 16px;
 }
 
@@ -61,11 +62,13 @@ div {
     color: hsl(var(--hue), var(--saturation), 15%);
     border: 4px solid hsl(var(--hue), var(--saturation), 25%);
     border-radius: 8px;
-    overflow-y: auto;
 }
 #score h1 {
     margin-bottom: 0px;
     padding-bottom: 0px;
+}
+#score pre {
+    text-wrap: wrap;
 }
 #scoreHeaderDiv {
     justify-content: space-around;
@@ -99,6 +102,9 @@ div {
     }
     #rulesContainer {
         width: 80vw;
+    }
+    #score {
+        margin-bottom: 8px;
     }
 }
 

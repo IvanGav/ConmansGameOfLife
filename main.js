@@ -259,25 +259,25 @@ function setupConditionsArray() {
     for(let cat of activeScoringCategories) {
         switch(cat.category) {
             case "cellBorn": 
-                displayScoreConditions[i++] = "cellBorn";
+                displayScoreConditions[i++] = `${cat.mult}x points for each cell born.`;
                 break;
             case "cellDies":
-                displayScoreConditions[i++] = "cellDies";
+                displayScoreConditions[i++] = `${cat.mult}x points for each cell that dies.`;
                 break;
             case "cellAlive":
-                displayScoreConditions[i++] = "cellAlive";
+                displayScoreConditions[i++] = `${cat.mult}x points for each cell that stays alive.`;
                 break;
             case "maxYDist":
-                displayScoreConditions[i++] = "maxYDist";
+                displayScoreConditions[i++] = `${cat.mult}x points for having great vertical distance between your cells.`;
                 break;
             case "maxXDist":
-                displayScoreConditions[i++] = "maxXDist";
+                displayScoreConditions[i++] = `${cat.mult}x points for having great horizontal distance between your cells.`;
                 break;
             case "colorBalance":
-                displayScoreConditions[i++] = "colorBalance";
+                displayScoreConditions[i++] = `${cat.mult}x multiplier for making your board look like a pack of skittles.`;
                 break;
             case "colorDominance":
-                displayScoreConditions[i++] = "colorDominance";
+                displayScoreConditions[i++] = `${cat.mult}x multiplier for favoring one color above the others.`;
                 break;
             default: break;
         }

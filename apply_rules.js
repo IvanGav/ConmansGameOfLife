@@ -18,8 +18,15 @@ function resetRules() {
         {type: 0, numCells: 3, comparison: 4, neighborState: 1},
         {type: 2, numCells: 3, comparison: 2, neighborState: 1, babyState: 1},
     ];
-    
+    putUpRules();
+}
+
+function putUpRules() {
     let rulesContainer = document.getElementById("rules");
+    rulesContainer.innerHTML = "";
+    let rulesTitle = document.createElement("h1");
+    rulesTitle.innerHTML = "Rules";
+    rules.append(rulesTitle);
     for(let i = 0; i < currentRules.length; i++) {
         let content = document.createTextNode(`${i+1}. ` + ruleParser(currentRules[i]));
         rulesContainer.append(content);

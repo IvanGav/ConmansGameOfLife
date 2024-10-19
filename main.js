@@ -15,6 +15,7 @@ let displayScoreConditions = ["", "Free Round", ""];
 let currentTurn = 0;
 
 generateBoard();
+resetRules();
 
 function generateBoard(width=16, height=16) {
     if(boardExists) {
@@ -77,10 +78,8 @@ function generateBoard(width=16, height=16) {
     let rules = document.createElement("div");
     rules.id = "rules";
     rulesPage.append(rules);
-    let rulesTitle = document.createElement("h1");
-    rulesTitle.innerHTML = "Rules";
-    rules.append(rulesTitle);
-    resetRules();
+    putUpRules();
+    // resetRules();
     formatConditions();
 
     for(let i = 0; i < 4; i++) {
@@ -92,13 +91,7 @@ function generateBoard(width=16, height=16) {
         if(i == 3) arrow.onclick = function() { moveBoard(0, 1); };
         board.append(arrow);
     }
-
-    console.log("finished generating board");
 }
-
-// function randRule() {
-    //     addRandRule();
-// }
 
 function getAlive() { return alive_cells; }
 
@@ -154,15 +147,6 @@ function getSpace(x, y) {
     return document.getElementById(`${x-widthOffset},${y-heightOffset}`);
 }
 
-function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
-
 function moveBoard(x, y) {
     subtractMap(alive_cells, true);
     widthOffset += x;
@@ -213,9 +197,6 @@ function doStep() {
     scorePoints();
     updateScore();
     assignNewScoringCategories();
-    // console.log("After:");
-    // console.log(alive_cells);
-    // console.log("____________");
 }
 
 //call after a step; score appropriate points
@@ -247,11 +228,6 @@ function scorePoints() {
             default: break;
         }
     }
-    // console.log("cats:");
-    // console.log(activeScoringCategories);
-    // console.log("points:");
-    // console.log(points);
-    // console.log("_______________________");
 }
 //call after a step; score appropriate points
 function setupConditionsArray() {
@@ -282,11 +258,6 @@ function setupConditionsArray() {
             default: break;
         }
     }
-    // console.log("cats:");
-    // console.log(activeScoringCategories);
-    // console.log("points:");
-    // console.log(points);
-    // console.log("_______________________");
 }
 
 //call once between two steps to choose new scoring categories

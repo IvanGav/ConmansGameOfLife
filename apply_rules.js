@@ -44,8 +44,8 @@ function genRandRule() {
         case 1:
             return ({
                 type: type,
-                numCells: Math.floor(Math.random()*9),
                 comparison: Math.floor(Math.random()*5),
+                numCells: Math.floor(Math.random()*9),
                 neighborState: Math.ceil(Math.random()*4),
             });
         case 2:

@@ -16,6 +16,34 @@ let currentTurn = 0;
 
 generateBoard();
 resetRules();
+listenArrowKeys();
+
+function listenArrowKeys() {
+    document.body.addEventListener('keydown', function (event) {
+        const key = event.key;
+        
+        if(i == 0) arrow.onclick = function() { moveBoard(1, 0); };
+        if(i == 1) arrow.onclick = function() { moveBoard(-1, 0); };
+        if(i == 2) arrow.onclick = function() { moveBoard(0, -1); };
+        if(i == 3) arrow.onclick = function() { moveBoard(0, 1); };
+
+        switch (key) {
+            case "ArrowLeft":
+                if(!activeStepInterval) { moveBoard(-1, 0); }
+                break;
+            case "ArrowRight":
+                if(!activeStepInterval) { moveBoard(1, 0); }
+                break;
+            case "ArrowUp":
+                if(!activeStepInterval) { moveBoard(0, -1); }
+                break;
+            case "ArrowDown":
+                if(!activeStepInterval) { moveBoard(0, 1); }
+                break;
+        }
+    });
+}
+
 
 function generateBoard(width=16, height=16) {
     if(boardExists) {

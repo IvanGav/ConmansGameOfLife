@@ -49,12 +49,11 @@ function putUpRules() {
 function genRandRule() {
     let type = Math.floor(Math.random()*4);
     let comparison = Math.floor(Math.random()*5);
+    let numCells = Math.floor(Math.random()*9);
     if (comparison == 0 || comparison == 1) {
         let numCells = Math.ceil(Math.random()*8);
     } else if (comparison == 3 || comparison == 4) {
         let numCells = Math.floor(Math.random()*8);
-    } else {
-        let numCells = Math.floor(Math.random()*9);
     }
     let neighborState = Math.ceil(Math.random()*4);
     let babyState = Math.ceil(Math.random()*4);
@@ -62,6 +61,7 @@ function genRandRule() {
     while (myState == babyState) {
         myState = Math.ceil(Math.random()*4);
     }
+    console.log(`type = ${type}\ncomparison = ${comparison}\nnumcells = ${numCells}\nneighborState = ${neighborState}\nbabystate = ${babyState}\nmystate = ${myState}`);
     switch(type) {
         case 0:
         case 1:
@@ -129,7 +129,8 @@ function addRandRule() {
         
     // }
     // console.log(ruleParser(currentRules[currentRules.length-1]));
-    currentRules.push(genRandRule);
+    currentRules.push(genRandRule());
+
     let rulesContainer = document.getElementById("rules");
     let content = document.createTextNode(`${currentRules.length}. ` + ruleParser(currentRules[currentRules.length - 1]));
     rulesContainer.append(content);

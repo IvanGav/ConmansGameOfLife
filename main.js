@@ -16,6 +16,7 @@ let currentTurn = 0;
 
 generateBoard();
 resetRules();
+resetEvolOrBorn();
 listenArrowKeys();
 
 function listenArrowKeys() {
@@ -113,6 +114,8 @@ function generateBoard(width=16, height=16) {
     rulesPage.append(rules);
     putUpRules();
     assignNewScoringCategories();
+
+    // resetEvolOrBorn();
 
     for(let i = 0; i < 4; i++) {
         let arrow = document.createElement("div");

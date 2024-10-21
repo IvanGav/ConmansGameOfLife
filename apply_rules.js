@@ -10,6 +10,8 @@ let currentRules = [ // conways by default
     {type: 2, numCells: 3, comparison: 2, neighborState: 1, babyState: 1},
 ];
 
+let evolvOrBorn = [true, false, false, false];
+
 function resetRules() {
     currentRules = [ // conways by default
         {type: 0, numCells: 2, comparison: 0, neighborState: 1},
@@ -18,7 +20,7 @@ function resetRules() {
         {type: 0, numCells: 3, comparison: 4, neighborState: 1},
         {type: 2, numCells: 3, comparison: 2, neighborState: 1, babyState: 1},
     ];
-    putUpRules();
+    // putUpRules();
 }
 
 function importRules(ruleStr) {
@@ -46,7 +48,12 @@ function putUpRules() {
     addRandRule();
 }
 
+function resetEvolOrBorn() {
+    evolvOrBorn = [true, false, false, false];
+}
+
 function genRandRule() {
+    // console.log(`rangenrule`);
     let type = Math.floor(Math.random()*4);
     let comparison = Math.floor(Math.random()*5);
     let numCells = Math.floor(Math.random()*9);
@@ -55,13 +62,30 @@ function genRandRule() {
     } else if (comparison == 3 || comparison == 4) {
         let numCells = Math.floor(Math.random()*8);
     }
+    
     let neighborState = Math.ceil(Math.random()*4);
+    
+    while(!evolvOrBorn[neighborState-1]) {
+        neighborState = Math.ceil(Math.random()*4);
+    }
+    // if (neighborState != 1) {
+    //     console.log(`THIS SHOULD NOT BE POSSIBLE RAH: ${neighborState} ${evolvOrBorn}`);
+    // }
+    
     let babyState = Math.ceil(Math.random()*4);
     let myState = Math.ceil(Math.random()*4);
-    while (myState == babyState) {
+    while(!evolvOrBorn[myState-1]) {
         myState = Math.ceil(Math.random()*4);
     }
-    console.log(`type = ${type}\ncomparison = ${comparison}\nnumcells = ${numCells}\nneighborState = ${neighborState}\nbabystate = ${babyState}\nmystate = ${myState}`);
+    
+    while (myState == babyState) {
+        babyState = Math.ceil(Math.random()*4);
+    }
+    if (type == 2 || type == 3) {
+        evolvOrBorn[babyState-1] = true;
+    }
+
+    // console.log(`type = ${type}\ncomparison = ${comparison}\nnumcells = ${numCells}\nneighborState = ${neighborState}\nbabystate = ${babyState}\nmystate = ${myState}`);
     switch(type) {
         case 0:
         case 1:
@@ -96,39 +120,6 @@ function addRule(newRule) {
 }
 
 function addRandRule() {
-    // let type = Math.floor(Math.random()*4);
-    // switch(type) {
-    //     case 0:
-    //     case 1:
-    //         currentRules.push({
-    //             type: type,
-    //             numCells: Math.floor(Math.random()*9),
-    //             comparison: Math.floor(Math.random()*5),
-    //             neighborState: Math.ceil(Math.random()*4),
-    //         });
-    //         break;
-    //     case 2:
-    //         currentRules.push({
-    //             type: type,
-    //             numCells: Math.floor(Math.random()*9),
-    //             comparison: Math.floor(Math.random()*5),
-    //             neighborState: Math.ceil(Math.random()*4),
-    //             babyState: Math.ceil(Math.random()*4),
-    //         });
-    //         break;
-    //     case 3:
-    //         currentRules.push({
-    //             type: type,
-    //             numCells: Math.floor(Math.random()*9),
-    //             comparison: Math.floor(Math.random()*5),
-    //             neighborState: Math.ceil(Math.random()*4),
-    //             myState: Math.ceil(Math.random()*4),
-    //             babyState: Math.ceil(Math.random()*4),
-    //         });
-    //         break;
-        
-    // }
-    // console.log(ruleParser(currentRules[currentRules.length-1]));
     currentRules.push(genRandRule());
 
     let rulesContainer = document.getElementById("rules");

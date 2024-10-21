@@ -56,12 +56,7 @@ function genRandRule() {
     // console.log(`rangenrule`);
     let type = Math.floor(Math.random()*4);
     let comparison = Math.floor(Math.random()*5);
-    let numCells = Math.floor(Math.random()*9);
-    if (comparison == 0 || comparison == 1) {
-        let numCells = Math.ceil(Math.random()*8);
-    } else if (comparison == 3 || comparison == 4) {
-        let numCells = Math.floor(Math.random()*8);
-    }
+    let numCells = Math.floor(Math.random()*7)+1;
     
     let neighborState = Math.ceil(Math.random()*4);
     

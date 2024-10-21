@@ -96,40 +96,40 @@ function addRule(newRule) {
 }
 
 function addRandRule() {
-    let type = Math.floor(Math.random()*4);
-    switch(type) {
-        case 0:
-        case 1:
-            currentRules.push({
-                type: type,
-                numCells: Math.floor(Math.random()*9),
-                comparison: Math.floor(Math.random()*5),
-                neighborState: Math.ceil(Math.random()*4),
-            });
-            break;
-        case 2:
-            currentRules.push({
-                type: type,
-                numCells: Math.floor(Math.random()*9),
-                comparison: Math.floor(Math.random()*5),
-                neighborState: Math.ceil(Math.random()*4),
-                babyState: Math.ceil(Math.random()*4),
-            });
-            break;
-        case 3:
-            currentRules.push({
-                type: type,
-                numCells: Math.floor(Math.random()*9),
-                comparison: Math.floor(Math.random()*5),
-                neighborState: Math.ceil(Math.random()*4),
-                myState: Math.ceil(Math.random()*4),
-                babyState: Math.ceil(Math.random()*4),
-            });
-            break;
+    // let type = Math.floor(Math.random()*4);
+    // switch(type) {
+    //     case 0:
+    //     case 1:
+    //         currentRules.push({
+    //             type: type,
+    //             numCells: Math.floor(Math.random()*9),
+    //             comparison: Math.floor(Math.random()*5),
+    //             neighborState: Math.ceil(Math.random()*4),
+    //         });
+    //         break;
+    //     case 2:
+    //         currentRules.push({
+    //             type: type,
+    //             numCells: Math.floor(Math.random()*9),
+    //             comparison: Math.floor(Math.random()*5),
+    //             neighborState: Math.ceil(Math.random()*4),
+    //             babyState: Math.ceil(Math.random()*4),
+    //         });
+    //         break;
+    //     case 3:
+    //         currentRules.push({
+    //             type: type,
+    //             numCells: Math.floor(Math.random()*9),
+    //             comparison: Math.floor(Math.random()*5),
+    //             neighborState: Math.ceil(Math.random()*4),
+    //             myState: Math.ceil(Math.random()*4),
+    //             babyState: Math.ceil(Math.random()*4),
+    //         });
+    //         break;
         
-    }
+    // }
     // console.log(ruleParser(currentRules[currentRules.length-1]));
-    
+    currentRules.push(genRandRule);
     let rulesContainer = document.getElementById("rules");
     let content = document.createTextNode(`${currentRules.length}. ` + ruleParser(currentRules[currentRules.length - 1]));
     rulesContainer.append(content);

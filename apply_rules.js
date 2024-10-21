@@ -48,33 +48,46 @@ function putUpRules() {
 
 function genRandRule() {
     let type = Math.floor(Math.random()*4);
+    let comparison = Math.floor(Math.random()*5);
+    if (comparison == 0 || comparison == 1) {
+        let numCells = Math.ceil(Math.random()*8);
+    } else if (comparison == 3 || comparison == 4) {
+        let numCells = Math.floor(Math.random()*8);
+    } else {
+        let numCells = Math.floor(Math.random()*9);
+    }
+    let neighborState = Math.ceil(Math.random()*4);
+    let babyState = Math.ceil(Math.random()*4);
+    let myState = Math.ceil(Math.random()*4);
+    while (myState == babyState) {
+        myState = Math.ceil(Math.random()*4);
+    }
     switch(type) {
         case 0:
         case 1:
             return ({
                 type: type,
-                comparison: Math.floor(Math.random()*5),
-                numCells: Math.floor(Math.random()*9),
-                neighborState: Math.ceil(Math.random()*4),
+                comparison: comparison,
+                numCells: numCells,
+                neighborState: neighborState,
             });
         case 2:
             return ({
                 type: type,
-                numCells: Math.floor(Math.random()*9),
-                comparison: Math.floor(Math.random()*5),
-                neighborState: Math.ceil(Math.random()*4),
-                babyState: Math.ceil(Math.random()*4),
+                comparison: comparison,
+                numCells: numCells,
+                neighborState: neighborState,
+                babyState: babyState,
             });
         case 3:
             return ({
                 type: type,
-                numCells: Math.floor(Math.random()*9),
-                comparison: Math.floor(Math.random()*5),
-                neighborState: Math.ceil(Math.random()*4),
-                myState: Math.ceil(Math.random()*4),
-                babyState: Math.ceil(Math.random()*4),
+                comparison: comparison,
+                numCells: numCells,
+                neighborState: neighborState,
+                myState: myState,
+                babyState: babyState,
             });
-        
     }
 }
 

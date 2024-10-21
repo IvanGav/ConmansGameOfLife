@@ -45,7 +45,7 @@ function putUpRules() {
         rulesContainer.append(document.createElement("br"));
     }
     
-    addRandRule();
+    // addRandRule();
 }
 
 function resetEvolOrBorn() {

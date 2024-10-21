@@ -19,6 +19,11 @@ generateBoard();
 resetEvolOrBorn();
 listenArrowKeys();
 
+function regenerateBoard() {
+    generateBoard();
+    addRandRule();
+}
+
 function listenArrowKeys() {
     document.body.addEventListener('keydown', function (event) {
         const key = event.key;

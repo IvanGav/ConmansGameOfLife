@@ -14,8 +14,8 @@ let activeScoringCategories = []; //list of {category: String, mult: number}
 let displayScoreConditions = ["", "Free Round", ""];
 let currentTurn = 0;
 
-generateBoard();
 resetRules();
+generateBoard();
 resetEvolOrBorn();
 listenArrowKeys();
 

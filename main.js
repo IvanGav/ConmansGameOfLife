@@ -24,6 +24,7 @@ function regenerateBoard() {
     addRandRule();
 }
 
+
 function listenArrowKeys() {
     document.body.addEventListener('keydown', function (event) {
         const key = event.key;
@@ -96,6 +97,11 @@ function generateBoard(width=16, height=16) {
     gameDiv.append(board);
     gameDiv.append(rulesPage);
 
+    if (devmode) {
+
+    } else {
+
+    }
     let score = document.createElement("div");
     score.id = "score";
     rulesPage.append(score);

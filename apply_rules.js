@@ -1,6 +1,12 @@
 const NO_STATE_CHANGE = -1;
 const DEAD_STATE = 0;
 const PROTECTED = 0.4;
+let devmode = false;
+
+
+function switchdev() {
+    devmode = !devmode;
+}
 
 let currentRules = [ // conways by default
     {type: 0, numCells: 2, comparison: 0, neighborState: 1},
@@ -451,7 +457,7 @@ function updateScore() {
     turnHeader.innerHTML = `Turn: ${Math.round(currentTurn++)}`;   
     let scoreHeader = scoreContainer.children[1];
     scoreHeader.innerHTML = `Score: ${Math.round(points)}`;    
-    if(currentTurn > 100) {
+    if(currentTurn > 100 && !devmode) {
         stopSteps();
         document.getElementById("board").remove();
         document.getElementById("genButton").style.display = "flex";

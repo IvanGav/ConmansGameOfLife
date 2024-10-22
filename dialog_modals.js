@@ -7,7 +7,8 @@ function openDialogImport() {
 
 function openDialogExport() {
     document.getElementById("exportSettings").showModal();
-    document.getElementById("exportSettingsOutput").innerHTML = exportRules();
+    document.getElementById("exportSettingsOutput").value = exportRules();
+    // document.getElementById("exportSettingsOutput").innerHTML = exportRules();
 }
 
 function closeDialogImport() {

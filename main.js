@@ -17,22 +17,16 @@ let currentTurn = 0;
 resetRules();
 generateBoard();
 resetEvolOrBorn();
-listenArrowKeys();
+listenKeys();
 
 function regenerateBoard() {
     generateBoard();
     addRandRule();
 }
 
-
-function listenArrowKeys() {
+function listenKeys() {
     document.body.addEventListener('keydown', function (event) {
         const key = event.key;
-        
-        if(i == 0) arrow.onclick = function() { moveBoard(1, 0); };
-        if(i == 1) arrow.onclick = function() { moveBoard(-1, 0); };
-        if(i == 2) arrow.onclick = function() { moveBoard(0, -1); };
-        if(i == 3) arrow.onclick = function() { moveBoard(0, 1); };
 
         switch (key) {
             case "ArrowLeft":
@@ -47,8 +41,20 @@ function listenArrowKeys() {
             case "ArrowDown":
                 if(!activeStepInterval) { moveBoard(0, 1); }
                 break;
+            case "Enter":   
+                if (!activeStepInterval) {
+                    doStep(); 
+                    startSteps();
+                } else {
+                    stopSteps();
+                }
+                break;
+            case " ":
+                doStep();
+                break;
         }
     });
+
 }
 
 

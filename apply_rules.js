@@ -35,7 +35,7 @@ function importRules(ruleStr) {
 }
 
 function exportRules() {
-    console.log(currentRules);
+    return JSON.stringify(currentRules);
 }
 
 function putUpRules() {

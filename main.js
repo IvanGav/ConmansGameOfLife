@@ -355,7 +355,7 @@ function startSteps() {
     document.getElementById("stopButton").style.filter = "brightness(125%) hue-rotate(180deg)";
 
     arrows = document.getElementsByClassName("arrow");
-    console.log(arrows);
+    // console.log(arrows);
     for(let arrow of arrows) {
         arrow.style.filter = "opacity(0%)";
         setTimeout(() => {
@@ -373,7 +373,7 @@ function stopSteps() {
     document.getElementById("goButton").style.filter = "brightness(125%) hue-rotate(-45deg)";
 
     arrows = document.getElementsByClassName("arrow");
-    console.log(arrows);
+    // console.log(arrows);
     for(let arrow of arrows) {
         arrow.style.display = "flex";
         setTimeout(() => {

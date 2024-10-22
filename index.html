@@ -38,5 +38,30 @@
     <div id="game"></div>
     <script src="apply_rules.js"></script>
     <script src="main.js"></script>
+    <script src="dialog_modals.js"></script>
+
+    <!-- i'm not sure if it's best to put them statically or just add them through JS, but they're here for the time being -->
+    <dialog class="dialogModal" id="exportSettings">
+        <h1>Export Settings</h1>
+        <p id="exportSettingsOutput">exported settings go here</p>
+        <div class="buttonPanel">
+            <div class="buttonContainer" id="closeDialogExportButton">
+                <div class="button" onclick="closeDialogExport()">Close</div>
+            </div>
+        </div>
+    </dialog>
+    
+    <dialog class="dialogModal" id="importSettings">
+        <h1>Import Settings</h1>
+        <input id="importSettingsInput" placeholder="Put in settings here" autofocus="false"></input>
+        <div class="buttonPanel">
+            <div class="buttonContainer" id="closeDialogImportButton">
+                <div class="button" onclick="closeDialogImport()">Cancel</div>
+            </div>
+            <div class="buttonContainer" id="importRulesButton">
+                <div class="button" onclick="dialogImportRules()">Import</div>
+            </div>
+        </div>
+    </dialog>
 </body>
 </html>

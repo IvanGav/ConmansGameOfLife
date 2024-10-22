@@ -43,10 +43,14 @@
     <!-- i'm not sure if it's best to put them statically or just add them through JS, but they're here for the time being -->
     <dialog class="dialogModal" id="exportSettings">
         <h1>Export Settings</h1>
+        <p>Click on the box below and press Ctrl+A to select everything, or press Copy.</p>
         <input id="exportSettingsOutput" disabled="true"></p> 
         <div class="buttonPanel">
             <div class="buttonContainer" id="closeDialogExportButton">
                 <div class="button" onclick="closeDialogExport()">Close</div>
+            </div>
+            <div class="buttonContainer" id="copyExportButton">
+                <div class="button" onclick="copyExport()">Copy</div>
             </div>
         </div>
     </dialog>

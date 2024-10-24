@@ -86,6 +86,11 @@ function genRandRule() {
         evolvOrBorn[babyState-1] = true;
     }
 
+    //make sure that you can't be born with < or <= conditions
+    if (type == 2 && comparison < 2) {
+        comparison = Math.floor(Math.random()*3)+2;
+    }
+
     // console.log(`type = ${type}\ncomparison = ${comparison}\nnumcells = ${numCells}\nneighborState = ${neighborState}\nbabystate = ${babyState}\nmystate = ${myState}`);
     switch(type) {
         case 0:
@@ -211,11 +216,11 @@ let generalDead = function(numCells, comparison, neighborState, curStateMap, che
                 return (sum < numCells) ? DEAD_STATE : NO_STATE_CHANGE;
             case 1:
                 return (sum <= numCells) ? DEAD_STATE : NO_STATE_CHANGE;
-                case 2:
+            case 2:
                 return (sum == numCells) ? DEAD_STATE : NO_STATE_CHANGE;
-                case 3:
+            case 3:
                 return (sum >= numCells) ? DEAD_STATE : NO_STATE_CHANGE;
-                case 4:
+            case 4:
                 return (sum > numCells) ? DEAD_STATE : NO_STATE_CHANGE;
             }
     }
